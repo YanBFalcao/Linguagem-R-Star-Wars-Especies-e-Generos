@@ -1,0 +1,75 @@
+---
+title: "Star Wars - Um estudo sobre Espécies e Gêneros"
+author: "Yan Falcao"
+date: "2023-10-17"
+output: 
+  html_document:
+   theme: journal
+   toc: true
+   toc_depth: 2
+   number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# **Objetivo**
+
+  Estudar a quantidade gêneros existentes no mundo Star Wars por meio de uma base de estudos proporcionada pelo R Studio.
+  
+```{r data, warning=TRUE}
+library(dplyr)
+data(starwars)
+```
+
+# **Gráficos para Análise**
+
+Gráficos de apresentação quantitativa sobre levantamento de informações na base de dados fornecida por R Studio.
+
+## Gráfico para análise de quantidade de espécies na base de dados
+
+```{r especies, echo=FALSE}
+library(dplyr)
+data("starwars")
+
+#Gerar gráfico de barras (Demonstrar a quantidade de espécies existentes)
+table(starwars$species)
+barplot(table(starwars$species), main = "Quantidade de Espécies na Base de Dados",
+        xlab = "Espécies", ylab = "Frequência", col = "darkgreen",
+        ylim = c(0,40))
+```
+
+## Gráfico para análise de quantidade de gêneros na base de dados
+
+```{r generos, echo=FALSE}
+library(dplyr)
+data("starwars")
+
+table(starwars$gender)
+barplot(table(starwars$gender), main = "Gêneros de Espécies na Base de Dados",
+        xlab = "Gêneros", ylab = "Frequência", col = "darkgreen", ylim = c(0,70))
+```
+
+## Análise de Qualidade de base "Star Wars"
+
+Em análise, conclui-se:
+
+* Yoda é o ser mais antigo entre os gêneros estudados;
+* Há mais droids que seres vivos;
+* Base está incompleta para análise geral.
+
+```{r analise, echo=FALSE}
+#Relatório simples de dados no console - data-frame - função "skim"
+library(dplyr)
+library(skimr)
+data("starwars")
+
+skim(starwars)
+```
+
+## Pontos de Atuação
+
+* Alimentar base para melhor análise de dados;
+* "Individualizar" informações por túpulas;
+* Melhorar descrição de planetas para verificar têndencia de gênero X espécie X região.
